@@ -57,6 +57,21 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+    labels:
+      # Traefik configuration for reverse proxy
+      - "traefik.enable=true"
+      - "traefik.http.services.musikwunsch.loadbalancer.server.port=80"
+      - "traefik.http.services.musikwunsch.loadbalancer.server.scheme=http"
+      # Route for main domain (musikwunsch.example.com or IP-based)
+      - "traefik.http.routers.musikwunsch-http.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.musikwunsch-http.entrypoints=web"
+      - "traefik.http.routers.musikwunsch-http.service=musikwunsch"
+      # Catch-all for HTTPS (from web redirect)
+      - "traefik.http.routers.musikwunsch-https.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.musikwunsch-https.entrypoints=websecure"
+      - "traefik.http.routers.musikwunsch-https.service=musikwunsch"
+      - "traefik.http.routers.musikwunsch-https.tls=true"
+      - "traefik.http.routers.musikwunsch-https.tls.certresolver=letsencrypt"
 
 volumes:
   postgres_data:
