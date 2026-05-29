@@ -20,9 +20,9 @@ HOST = "187.124.20.215"
 PORT = 22
 USERNAME = "root"
 PASSWORD = "Extra01#1234"
-REPO_URL = "ssh://root@187.124.20.215/var/repos/musikwunsch.git"  # Change this
+REPO_URL = "https://github.com/openmusixcom/musikwunsch-app.git"
 PROJECT_DIR = "/var/www/musikwunsch-app"
-DOMAIN = "87.106.215.187.nip.io"  # Change this
+DOMAIN = "87.106.215.187.nip.io"
 
 class HostingerDeployer:
     def __init__(self, host, port, username, password):
