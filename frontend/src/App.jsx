@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
+import GuestPage from './pages/GuestPage'
 import GuestApp from './pages/GuestApp'
 import DJDashboard from './pages/DJDashboard'
 import AdminPanel from './pages/AdminPanel'
@@ -62,6 +63,11 @@ function App() {
             element={<DJDashboard user={user} onLogout={handleLogout} />}
           />
         )}
+
+        <Route
+          path="/guest"
+          element={<GuestPage />}
+        />
 
         <Route
           path="/event/:eventId"

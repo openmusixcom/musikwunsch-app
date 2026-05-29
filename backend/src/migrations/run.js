@@ -20,11 +20,20 @@ async function runMigrations() {
   try {
     console.log('🔄 Running migrations...');
 
-    // Read and execute SQL file
-    const sqlFile = path.join(migrationsDir, '001_initial_schema.sql');
-    const sql = fs.readFileSync(sqlFile, 'utf8');
+    const migrations = [
+      '001_initial_schema.sql',
+      '002_guest_sessions.sql'
+    ];
 
-    await client.query(sql);
+    for (const migration of migrations) {
+      const sqlFile = path.join(migrationsDir, migration);
+      if (fs.existsSync(sqlFile)) {
+        const sql = fs.readFileSync(sqlFile, 'utf8');
+        await client.query(sql);
+        console.log(`   ✓ ${migration}`);
+      }
+    }
+
     console.log('✅ Migrations completed successfully');
   } catch (error) {
     console.error('❌ Migration error:', error);

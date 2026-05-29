@@ -1,0 +1,362 @@
+.guest-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+.stage {
+  width: 100%;
+  max-width: 500px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* QR Entry Stage */
+.qr-entry-stage .stage-card,
+.name-entry-stage .stage-card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.stage-card h1 {
+  color: #667eea;
+  margin: 0 0 10px 0;
+  font-size: 32px;
+}
+
+.stage-card h2 {
+  color: #333;
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.stage-card p {
+  color: #666;
+  margin: 0 0 30px 0;
+  font-size: 14px;
+}
+
+.stage-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.stage-card input {
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.stage-card input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.stage-card button {
+  padding: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.stage-card button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.stage-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74c3c;
+  background: #fadbd8;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* Main Guest Stage */
+.main-stage {
+  max-width: 900px;
+}
+
+.guest-header {
+  background: white;
+  padding: 30px;
+  border-radius: 12px 12px 0 0;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.guest-header h1 {
+  color: #667eea;
+  margin: 0;
+  font-size: 28px;
+}
+
+.guest-header p {
+  color: #666;
+  margin: 5px 0 0 0;
+}
+
+.guest-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.section {
+  background: white;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-section {
+  border-radius: 0 0 0 12px;
+}
+
+.queue-section {
+  border-radius: 0 0 12px 0;
+  border-left: 2px solid #eee;
+}
+
+.section h3 {
+  color: #333;
+  margin: 0 0 20px 0;
+  font-size: 18px;
+}
+
+.section form {
+  display: flex;
+  gap: 10px;
+}
+
+.section input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.section input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.section button {
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.section button:hover:not(:disabled) {
+  background: #764ba2;
+}
+
+.section button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Search Results */
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 15px;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #667eea;
+}
+
+.song-item {
+  border: none;
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-info strong {
+  display: block;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.song-info p {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+}
+
+.song-info small {
+  display: block;
+  color: #999;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.duration {
+  display: inline-block;
+  background: #e8ecff;
+  color: #667eea;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.search-result button,
+.queue-item .vote-btn {
+  padding: 8px 12px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 10px;
+  transition: background 0.3s;
+}
+
+.search-result button:hover:not(:disabled) {
+  background: #764ba2;
+}
+
+/* Queue */
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #667eea;
+}
+
+.queue-item .rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #667eea;
+  color: white;
+  border-radius: 50%;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.queue-item .song-info {
+  flex: 1;
+}
+
+.votes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.vote-count {
+  background: #fff3cd;
+  color: #856404;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.vote-btn {
+  padding: 6px 10px !important;
+  background: #667eea !important;
+  font-size: 14px;
+  min-width: 40px;
+}
+
+.vote-btn:hover:not(:disabled) {
+  background: #764ba2 !important;
+  transform: scale(1.1);
+}
+
+.empty-queue {
+  color: #999;
+  text-align: center;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .guest-container {
+    grid-template-columns: 1fr;
+  }
+
+  .search-section {
+    border-radius: 0;
+  }
+
+  .queue-section {
+    border-radius: 0 0 12px 12px;
+    border-left: none;
+    border-top: 2px solid #eee;
+  }
+
+  .stage {
+    max-width: 100%;
+  }
+
+  .guest-header {
+    border-radius: 12px 12px 0 0;
+  }
+}
