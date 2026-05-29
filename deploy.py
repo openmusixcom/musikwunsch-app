@@ -20,7 +20,17 @@ HOST = "187.124.20.215"
 PORT = 22
 USERNAME = "root"
 PASSWORD = "Extra01#1234"
-REPO_URL = "https://github.com/openmusixcom/musikwunsch-app.git"
+
+# GitHub configuration (uses environment variable for token)
+GITHUB_USERNAME = "openmusixcom"
+GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN', '')  # Set via: set GITHUB_TOKEN=your_token
+REPO_NAME = "musikwunsch-app"
+
+if GITHUB_TOKEN:
+    REPO_URL = f"https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@github.com/{GITHUB_USERNAME}/{REPO_NAME}.git"
+else:
+    REPO_URL = f"https://github.com/{GITHUB_USERNAME}/{REPO_NAME}.git"
+
 PROJECT_DIR = "/var/www/musikwunsch-app"
 DOMAIN = "87.106.215.187.nip.io"
 
