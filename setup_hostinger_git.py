@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 Setup Hostinger Git Repository - Automates STEP 1 of deployment
 Creates bare git repository on Hostinger server and configures local remote
@@ -7,6 +8,12 @@ Creates bare git repository on Hostinger server and configures local remote
 import paramiko
 import subprocess
 import sys
+import io
+import os
+
+# Fix encoding for Windows
+if os.name == 'nt':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # Configuration
 HOST = "187.124.20.215"
@@ -103,7 +110,7 @@ def update_deploy_script():
     domain = "87.106.215.187.nip.io"
 
     try:
-        with open("deploy.py", "r") as f:
+        with open("deploy.py", "r", encoding="utf-8") as f:
             content = f.read()
 
         # Update REPO_URL
@@ -118,7 +125,7 @@ def update_deploy_script():
             f'DOMAIN = "{domain}"'
         )
 
-        with open("deploy.py", "w") as f:
+        with open("deploy.py", "w", encoding="utf-8") as f:
             f.write(content)
 
         print(f"✅ deploy.py updated:")

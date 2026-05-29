@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 Musikwunsch DJ App - Hostinger VPS Deployment Script
 Automated deployment with SSH password authentication
@@ -7,15 +8,21 @@ Automated deployment with SSH password authentication
 import paramiko
 import time
 import sys
+import io
+import os
+
+# Fix encoding for Windows
+if os.name == 'nt':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # Configuration
 HOST = "187.124.20.215"
 PORT = 22
 USERNAME = "root"
 PASSWORD = "Extra01#1234"
-REPO_URL = "https://github.com/yourusername/musikwunsch-app.git"  # Change this
+REPO_URL = "ssh://root@187.124.20.215/var/repos/musikwunsch.git"  # Change this
 PROJECT_DIR = "/var/www/musikwunsch-app"
-DOMAIN = "musikwunsch.example.com"  # Change this
+DOMAIN = "87.106.215.187.nip.io"  # Change this
 
 class HostingerDeployer:
     def __init__(self, host, port, username, password):
