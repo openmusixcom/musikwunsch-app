@@ -18,8 +18,7 @@
     "jsonwebtoken": "^9.0.0",
     "dotenv": "^16.0.3",
     "socket.io": "^4.5.4",
-    "axios": "^1.4.0",
-    "qrcode": "^1.5.3"
+    "axios": "^1.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
