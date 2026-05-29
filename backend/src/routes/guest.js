@@ -2,7 +2,7 @@ import express from 'express';
 import * as guestController from '../controllers/guestController.js';
 import * as wishController from '../controllers/wishController.js';
 import * as eventController from '../controllers/eventController.js';
-import { verifyToken } from '../middleware/auth.js';
+import { authMiddleware } from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -29,10 +29,10 @@ router.delete('/requests/:wishId', wishController.removeSongRequest);
 router.post('/requests/:wishId/vote', wishController.voteForSong);
 
 // DJ/Admin routes (require authentication)
-router.post('/events', verifyToken, eventController.createEvent);
-router.get('/events', verifyToken, eventController.listEvents);
-router.get('/events/:eventId', verifyToken, eventController.getEventDetails);
-router.put('/events/:eventId/status', verifyToken, eventController.updateEventStatus);
-router.get('/events/:eventId/qr', verifyToken, eventController.generateQRCode);
+router.post('/events', authMiddleware, eventController.createEvent);
+router.get('/events', authMiddleware, eventController.listEvents);
+router.get('/events/:eventId', authMiddleware, eventController.getEventDetails);
+router.put('/events/:eventId/status', authMiddleware, eventController.updateEventStatus);
+router.get('/events/:eventId/qr', authMiddleware, eventController.generateQRCode);
 
 export default router;
